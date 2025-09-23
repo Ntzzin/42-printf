@@ -1,0 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstrn.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nado-nas <nado-nas@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/15 14:55:55 by nado-nas          #+#    #+#             */
+/*   Updated: 2025/09/18 13:38:05 by nado-nas         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <ft_printf.h>
+
+/**
+ * @return The amount of characters printed
+ */
+int	ft_putstrn(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		ft_putcharn(str[i++]);
+	return (i);
+}
