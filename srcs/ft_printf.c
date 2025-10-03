@@ -6,32 +6,45 @@
 /*   By: nado-nas <nado-nas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 12:19:08 by nado-nas          #+#    #+#             */
-/*   Updated: 2025/09/23 11:13:51 by nado-nas         ###   ########.fr       */
+/*   Updated: 2025/10/03 16:54:06 by nado-nas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-int	ft_putfmt(const char *src, va_list *ap)
+static int	ft_isspec(char c)
 {
-	if (src[0] == 'c')
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u'
+		|| c == 'x' || c == 'X' || c == '%')
+		return (1);
+	return (0);
+}
+
+static int	ft_putspec(const char c, va_list *ap)
+{
+	t_ull	tmp;
+
+	if (c == 'c')
 		return (ft_putcharn(va_arg(*ap, int)));
-	else if (src[0] == 's')
+	else if (c == 's')
 		return (ft_putstrn(va_arg(*ap, char *)));
-	else if (src[0] == 'p')
+	else if (c == 'p')
 	{
-		ft_putstrn("0x");
-		return (ft_putbasen(va_arg(*ap, ull), HEX, 16) + 2);
+		tmp = va_arg(*ap, t_ull);
+		if (tmp)
+			return (ft_putstrn("0x") + ft_putbasen(tmp, HEX, 16));
+		else
+			return (ft_putstrn("(nil)"));
 	}
-	else if (src[0] == 'd' || src[0] == 'i')
-		return (ft_putbpadd(va_arg(*ap, int), DEC, 5, '0'));
-	else if (src[0] == 'u' || src[0] == 'i')
-		return (ft_putbasen(va_arg(*ap, ui), DEC, 10));
-	else if (src[0] == 'x')
-		return (ft_putbasen(va_arg(*ap, ui), HEX, 16));
-	else if (src[0] == 'X')
-		return (ft_putbasen(va_arg(*ap, ui), UHEX, 16));
-	else if (src[0] == '%')
+	else if (c == 'd' || c == 'i')
+		return (ft_putbasen(va_arg(*ap, int), DEC, 10));
+	else if (c == 'u' || c == 'i')
+		return (ft_putbasen(va_arg(*ap, t_ui), DEC, 10));
+	else if (c == 'x')
+		return (ft_putbasen(va_arg(*ap, t_ui), HEX, 16));
+	else if (c == 'X')
+		return (ft_putbasen(va_arg(*ap, t_ui), UHEX, 16));
+	else if (c == '%')
 		return (ft_putcharn('%'));
 	return (0);
 }
@@ -40,44 +53,25 @@ int	ft_printf(const char *fmt, ...)
 {
 	va_list	ap;
 	int		i;
-	int		c;
+	int		n;
 
-	if (!ft_vfmt(fmt))
-		return (0);
 	i = 0;
-	c = 0;
+	n = 0;
 	va_start(ap, fmt);
 	while (fmt[i])
 	{
-		if (fmt[i] != '%')
-			c += ft_putcharn(fmt[i]);
-		else if (fmt[++i])
-			c += ft_putfmt(&(fmt[i]), &ap);
+		if (fmt[i] == '%')
+		{
+			if (ft_isspec(fmt[i + 1]))
+			{
+				n += ft_putspec(fmt[++i], &ap);
+				i++;
+				continue ;
+			}
+		}
+		n += ft_putcharn(fmt[i]);
 		i++;
 	}
 	va_end(ap);
-	return (c);
-}
-
-#include <stdio.h>
-#include <stdlib.h>
-
-int	main(void)
-{
-	int		r;
-	int		e;
-	//void	*s;
-	int		s;
-
-	/*
-	s = (void*)0x003ff4d478a712a0;
-	r = ft_printf("e: %p\n", s);
-	e = printf("r: %p\n", s);
-	printf("r: %d, e: %d\n", r, e);
-	*/
-	//r = ft_printf("r: %x\n", -120);
-	//e = printf("e: %x\n", -120);
-	//printf("%d, %d", r, e);
-	printf("|%010#s|\n", "10");
-	printf("|%010d|\n", 10); 
+	return (n);
 }
