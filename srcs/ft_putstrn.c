@@ -6,7 +6,7 @@
 /*   By: nado-nas <nado-nas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:55:55 by nado-nas          #+#    #+#             */
-/*   Updated: 2025/10/03 16:51:38 by nado-nas         ###   ########.fr       */
+/*   Updated: 2025/10/06 11:50:22 by nado-nas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /**
  * @return The amount of characters printed
+ * @note Prints "(null) if the pointer is NULL"
  */
 int	ft_putstrn(const char *str)
 {
