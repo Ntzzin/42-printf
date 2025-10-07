@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdarg.h>
-# include <stdio.h>
 
 # define DEC "0123456789"
 # define HEX "0123456789abcdef"
