@@ -1,5 +1,5 @@
 <div align="center">
-<img src="./.README/book-bookmark-solid.svg" width="60">
+<img src="./.README/chevron-right-solid-full(1).svg" width="60"> <img src="./.README/f-solid-full.svg" width="60"> <img src="./.README/chevron-left-solid-full.svg" width="60">
 
 # Printf Project
 ![Static Badge](https://img.shields.io/badge/N%2FA-Grade?style=for-the-badge&label=Grade&color=%23ed3491)
