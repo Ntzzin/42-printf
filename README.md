@@ -16,7 +16,7 @@ stdio lib.
 -  Memory menagement
 -  String manipulation
 -  Variadic functions
--  Varaible types
+-  Variable types
 -  Makefile
 -  Doxygen documenting (very basic, only when I felt the need for)
 
