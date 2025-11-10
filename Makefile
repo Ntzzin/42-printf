@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iincludes
+CFLAGS = -Wall -Wextra -Werror
 
 SRC = srcs/ft_printf.c srcs/ft_putbasen.c srcs/ft_putcharn.c srcs/ft_putstrn.c
 
@@ -28,7 +28,7 @@ $(NAME): $(OBJ)
 	ar rcs $@ $^
 
 clean:
-	rm -f $(OBJ) $(BOBJ)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)

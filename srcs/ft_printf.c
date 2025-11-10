@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
+#include "../includes/ft_printf.h"
 
 static int	ft_isspec(char c)
 {
@@ -55,6 +55,8 @@ int	ft_printf(const char *fmt, ...)
 	int		i;
 	int		n;
 
+	if (!fmt)
+		return (-1);
 	i = 0;
 	n = 0;
 	va_start(ap, fmt);
