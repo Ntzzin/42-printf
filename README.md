@@ -2,7 +2,7 @@
 <img src="./.README/caret-right-solid-full.svg" width="60"> <img src="./.README/f-solid-full.svg" width="60"> <img src="./.README/caret-left-solid-full.svg" width="60">
 
 # Printf Project
-![Static Badge](https://img.shields.io/badge/N%2FA-Grade?style=for-the-badge&label=Grade&color=%23ed3491)
+![Static Badge](https://img.shields.io/badge/100%2F100-Grade?style=for-the-badge&label=Grade&color=%23ed3491)
 </div>
 
 
